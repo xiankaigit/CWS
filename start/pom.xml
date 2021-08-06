@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.xk.bigdata.cws</groupId>
+        <artifactId>cws-parent</artifactId>
+        <version>0.0.1-snapshot</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>start</artifactId>
+    <name>start</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>tools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>modules</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>business</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>reference</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
+</project>

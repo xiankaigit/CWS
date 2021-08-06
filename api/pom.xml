@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.xk.bigdata.cws</groupId>
+        <artifactId>cws-parent</artifactId>
+        <version>0.0.1-snapshot</version>
+    </parent>
+
+    <groupId>com.xk.bigdata.cws</groupId>
+    <artifactId>api</artifactId>
+
+    <name>api</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.paypal.springboot</groupId>
+            <artifactId>resteasy-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
