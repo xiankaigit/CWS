@@ -6,12 +6,13 @@
 
     <parent>
         <groupId>com.xk.bigdata.cws</groupId>
-        <artifactId>common</artifactId>
+        <artifactId>cws-common</artifactId>
         <version>0.0.1-snapshot</version>
     </parent>
-
-    <artifactId>beans</artifactId>
-    <name>beans</name>
+    <groupId>com.xk.bigdata.cws</groupId>
+    <artifactId>cws-beans</artifactId>
+    <name>cws-beans</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -20,6 +21,5 @@
             <version>${junit.version}</version>
         </dependency>
     </dependencies>
-
 
 </project>

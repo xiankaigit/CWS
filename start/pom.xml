@@ -8,9 +8,10 @@
         <version>0.0.1-snapshot</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.xk.bigdata.cws</groupId>
     <artifactId>start</artifactId>
     <name>start</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -19,35 +20,31 @@
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>cws-beans</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>cws-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>beans</artifactId>
+            <artifactId>cws-tools</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>tools</artifactId>
+            <artifactId>cws-business</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>modules</artifactId>
+            <artifactId>cws-reference</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>business</artifactId>
+            <artifactId>cws-provider</artifactId>
         </dependency>
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>reference</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.xk.bigdata.cws</groupId>
-            <artifactId>provider</artifactId>
+            <artifactId>cws-web</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -55,4 +52,195 @@
             <version>${junit.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>cws-${project.version}</finalName>
+        <plugins>
+            <!-- 插件maven-clean-plugin，用于在编译前，清除之前编译的文件、文件夹等，避免残留之前的内容 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <!-- 前端资源目录，即：存放前端包目录-->
+                            <directory>src/main/resources/static</directory>
+                        </fileset>
+                        <fileset>
+                            <!-- Vue项目打包自动生成的dist目录 -->
+                            <directory>${project.parent.basedir}/web/dist</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <!--frontend-maven-plugin为项目本地下载/安装Node和NPM，运行npm install命令-->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <workingDirectory>${project.parent.basedir}/web</workingDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v12.22.1</nodeVersion>
+                            <npmVersion>6.14.2</npmVersion>
+                            <nodeDownloadRoot>https://npm.taobao.org/mirrors/node/</nodeDownloadRoot>
+                            <npmDownloadRoot>https://registry.npm.taobao.org/npm/-/</npmDownloadRoot>
+                        </configuration>
+                    </execution>
+                    <!-- Install all project dependencies -->
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <arguments>install</arguments>
+                            <npmRegistryURL>https://registry.npm.taobao.org/</npmRegistryURL>
+                        </configuration>
+                    </execution>
+                    <!-- Build and minify static files -->
+                    <execution>
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--资源插件，主要为了从前端项目里复制打包好的文件到springboot项目-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy static</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 复制前端打包文件到这里 -->
+                            <outputDirectory>src/main/resources/static</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <!-- 从前端打包的目录dist进行指定文件、文件夹内容的复制-->
+                                    <directory>${project.parent.basedir}/web/dist</directory>
+                                    <includes>
+                                        <!-- 具体根据实际前端代码、及目录结构进行配置-->
+                                        <include>css/</include>
+                                        <include>fonts/</include>
+                                        <include>img/</include>
+                                        <include>js/</include>
+                                        <include>favicon.ico</include>
+                                        <include>index.html</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <arguments>
+                                <argument>${project.parent.basedir}\api</argument>
+                                <argument>${project.basedir}\apidoc</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <!-- start模块在jar包中排除工程配置文件 -->
+                    <excludes>
+                        <exclude>**/*.properties</exclude>
+                        <exclude>core-site.xml</exclude>
+                        <exclude>hdfs-site.xml</exclude>
+                        <exclude>hbase-site.xml</exclude>
+                        <exclude>logback-spring.xml</exclude>
+                        <exclude>yarn-site.xml</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!-- 设置源文件编码方式 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 打包source文件为jar文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!--这个就是打包后的zip名字-->
+                    <finalName>cws-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <outputDirectory>../../output/</outputDirectory>
+                    <archive>
+                        <manifest>
+                            <!-- 改为当前工程的主类 -->
+                            <mainClass>com.xk.bigdata.cws.start.CwsRuner</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptors>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

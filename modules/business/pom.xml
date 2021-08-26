@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.xk.bigdata.cws</groupId>
-        <artifactId>modules</artifactId>
+        <artifactId>cws-modules</artifactId>
         <version>0.0.1-snapshot</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>business</artifactId>
-
-    <name>business</name>
+    <groupId>com.xk.bigdata.cws</groupId>
+    <artifactId>cws-business</artifactId>
+    <name>cws-business</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -20,6 +20,5 @@
             <version>${junit.version}</version>
         </dependency>
     </dependencies>
-
 
 </project>
