@@ -1,4 +1,4 @@
-package com.xk.bigdata.common.beans;
+package com.xk.bigdata.cws.common.tools;
 
 import static org.junit.Assert.assertTrue;
 
