@@ -1,4 +1,4 @@
-package com.xk.bigdata;
+package com.xk.bigdata.cws.api;
 
 import static org.junit.Assert.assertTrue;
 

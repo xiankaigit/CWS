@@ -1,4 +1,4 @@
-package com.xk.bigdata.cws;
+package com.xk.bigdata.cws.moudles.reference;
 
 import static org.junit.Assert.assertTrue;
 

@@ -1,7 +1,6 @@
-package com.xk.bigdata.cws;
+package com.xk.bigdata.cws.modules.provider;
 
-import org.apache.http.HttpRequest;
-import org.apache.log4j.spi.LoggerFactory;
+import com.xk.bigdata.cws.api.IHealthCheck;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

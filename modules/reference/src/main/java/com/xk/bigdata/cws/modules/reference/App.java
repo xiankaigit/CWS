@@ -1,4 +1,4 @@
-package com.xk.bigdata.cws;
+package com.xk.bigdata.cws.modules.reference;
 
 /**
  * Hello world!
