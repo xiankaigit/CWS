@@ -13,6 +13,7 @@
     <artifactId>cws-beans</artifactId>
     <name>cws-beans</name>
     <packaging>jar</packaging>
+    <description>每个模块都能用到的实体类，此模块应该保持轻量级，不能让spring托管</description>
 
     <dependencies>
         <dependency>

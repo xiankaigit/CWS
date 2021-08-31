@@ -27,10 +27,16 @@
     <properties>
         <junit.version>4.11</junit.version>
         <resteasy.version>2.3.4-RELEASE</resteasy.version>
+        <jaxrs.version>3.0.12.Final</jaxrs.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>jaxrs-api</artifactId>
+                <version>${jaxrs.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.paypal.springboot</groupId>
                 <artifactId>resteasy-spring-boot-starter</artifactId>
