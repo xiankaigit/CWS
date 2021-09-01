@@ -13,6 +13,9 @@ import java.util.Map;
 @Component
 public class HealthCheckController implements IHealthCheck {
 
+    public HealthCheckController() {
+        System.out.println("=====controller======");
+    }
 
     @Override
     public Map<String, Object> healthCheck() {
