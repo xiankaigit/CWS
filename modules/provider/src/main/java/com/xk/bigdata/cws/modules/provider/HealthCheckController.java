@@ -13,13 +13,8 @@ import java.util.Map;
 @Component
 public class HealthCheckController implements IHealthCheck {
 
-    public HealthCheckController() {
-        System.out.println("=====controller======");
-    }
-
     @Override
     public Map<String, Object> healthCheck() {
-        System.out.println("我收到了一个请求");
         Map<String,Object> map = new HashMap<>();
         map.put("status","running");
         return map;

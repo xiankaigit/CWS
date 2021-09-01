@@ -20,3 +20,4 @@ RemoteSystemsTempFiles
 .springBeans
 .apt_generated
 data
+static

@@ -6,7 +6,7 @@ import javax.ws.rs.core.MediaType;
 import java.net.HttpRetryException;
 import java.util.Map;
 
-@Path("/system")
+@Path("/cws/system")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public interface IHealthCheck {

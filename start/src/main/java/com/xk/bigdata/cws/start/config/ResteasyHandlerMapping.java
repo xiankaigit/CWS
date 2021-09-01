@@ -57,11 +57,8 @@ public class ResteasyHandlerMapping implements HandlerMapping, Ordered, Initiali
     public HandlerExecutionChain getHandler(HttpServletRequest request)
             throws Exception {
         String requestURI = request.getRequestURI();
-        for (int i = 0; i < staticResources.length; i++) {
-            if (requestURI.endsWith(staticResources[i])) {
-                return null;
-            }
-        }
+        if(!requestURI.startsWith("/cws"))
+            return null;
 
         ResteasyRequestWrapper requestWrapper = RequestUtil.getRequestWrapper(
                 request, request.getMethod(), prefix);
