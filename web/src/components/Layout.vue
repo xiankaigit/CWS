@@ -1,13 +1,16 @@
 <template>
     <el-container>
-        <el-header style="text-align: left">欢迎使用超级计算工作站（CWS）</el-header>
+
         <el-container>
             <el-aside id="nav-aside" width="200px" style="background-color: rgb(84,92,100); ">
                 <Navigation></Navigation>
             </el-aside>
-            <el-main>
+            <el-container>
+              <el-header style="text-align: left">欢迎使用超级计算工作站（CWS）</el-header>
+              <el-main>
                 <SqlArea></SqlArea>
-            </el-main>
+              </el-main>
+            </el-container>
         </el-container>
     </el-container>
 </template>
@@ -15,10 +18,11 @@
 <script>
     import Navigation from "./Navigation";
     import SqlArea from "./SqlArea";
+    import SqlArea2 from "@/components/SqlArea2";
 
     export default {
         name: "Layout",
-        components: {Navigation,SqlArea},
+        components: {Navigation,SqlArea,SqlArea2},
         data() {
             const item = {
                 date: '2016-05-02',
