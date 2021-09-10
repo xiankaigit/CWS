@@ -20,6 +20,7 @@
         <module>start</module>
         <module>api</module>
         <module>web</module>
+        <module>builder</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -29,10 +30,16 @@
         <junit.version>4.11</junit.version>
         <resteasy.version>2.3.4-RELEASE</resteasy.version>
         <jaxrs.version>3.0.12.Final</jaxrs.version>
+        <javatuples.version>1.2</javatuples.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.javatuples</groupId>
+                <artifactId>javatuples</artifactId>
+                <version>${javatuples.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>jaxrs-api</artifactId>
@@ -56,6 +63,16 @@
             <dependency>
                 <groupId>com.xk.bigdata.cws</groupId>
                 <artifactId>cws-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xk.bigdata.cws</groupId>
+                <artifactId>cws-sql-parser</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xk.bigdata.cws</groupId>
+                <artifactId>cws-task-builder</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

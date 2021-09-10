@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.xk.bigdata.cws</groupId>
+        <artifactId>cws-builder</artifactId>
+        <version>0.0.1-snapshot</version>
+    </parent>
+    <artifactId>cws-sql-parser</artifactId>
+    <name>cws-sql-parser</name>
+    <packaging>jar</packaging>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.javatuples</groupId>
+            <artifactId>javatuples</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>cws-tools</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>
