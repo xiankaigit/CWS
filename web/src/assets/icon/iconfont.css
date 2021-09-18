@@ -1,0 +1,10 @@
+.el-icon-my-format{
+     background: url('~@/assets/icon/format.svg') center no-repeat;
+     background-size: 100% 100%;
+    font-size: 16px;
+}
+.el-icon-my-format:before{
+    font-size: 16px;
+    visibility: hidden;
+    content: "\e611";
+}

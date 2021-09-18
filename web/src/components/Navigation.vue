@@ -1,15 +1,15 @@
 <template>
-    <el-row class="tac" >
+    <el-row class="tac">
         <el-col :span="12" style="width: 200px;">
             <el-menu style=""
-                    default-active="2"
-                    class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
-                    background-color="#545c64"
-                    text-color="#fff"
-                    active-text-color="#ffd04b"
-                    :unique-opened="true">
+                     default-active="2"
+                     class="el-menu-vertical-demo"
+                     @open="handleOpen"
+                     @close="handleClose"
+                     background-color="#545c64"
+                     text-color="#fff"
+                     active-text-color="#ffd04b"
+                     :unique-opened="true">
                 <el-submenu index="1">
                     <template slot="title">
                         <i class="el-icon-setting"></i>
@@ -23,7 +23,7 @@
                         <i class="el-icon-menu"></i>
                         <span>任务管理</span>
                     </template>
-                    <el-menu-item index="2-1">SQL任务</el-menu-item>
+                    <el-menu-item index="2-1" @click="goTo('/sql')">SQL任务</el-menu-item>
                     <el-menu-item index="2-2">可视化任务</el-menu-item>
                     <el-menu-item index="2-3">任务调度</el-menu-item>
                     <el-menu-item index="2-4">任务监控</el-menu-item>
@@ -34,35 +34,33 @@
 </template>
 
 <script>
-    export default {
-        name:"Navigation",
-        components: {
-        },
-        data() {
-            const item = {
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            };
-            return {
-                tableData: Array(20).fill(item)
-            }
-        },
-        methods:{
-            handleOpen(key, keyPath) {
-                console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                console.log(key, keyPath);
-            }
-
+export default {
+    name: "Navigation",
+    components: {},
+    data() {
+        return {
+            "test":"test"
         }
-    };
+    },
+    methods: {
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        goTo(target){
+           this.$router.push({
+               name: 'sql'
+           })
+        }
+    }
+};
 
 </script>
 
 <style scoped>
-    .el-submenu .el-menu-item{
-        padding-left : 45px !important;
-    }
+.el-submenu .el-menu-item {
+    padding-left: 45px !important;
+}
 </style>
