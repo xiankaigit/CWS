@@ -2,15 +2,12 @@ package com.xk.bigdata.cws.sql.parser.rule;
 
 import com.xk.bigdata.cws.common.tools.engine.Engine;
 import com.xk.bigdata.cws.common.tools.engine.SupportEngineTool;
-import com.xk.bigdata.cws.common.tools.exception.SqlParseExeception;
-import com.xk.bigdata.cws.common.tools.validate.ValidateParam;
+import com.xk.bigdata.cws.common.beans.exception.SqlParseExeception;
 import com.xk.bigdata.cws.sql.parser.BaseSqlParser;
 import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
-
-import java.util.Locale;
 
 /**
  * @author ：xiankai

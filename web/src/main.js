@@ -13,9 +13,12 @@ Vue.config.productionTip = false
 import VueCodeMirror from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
 Vue.use(VueCodeMirror)
+//路由
 import VueRouter from 'vue-router'
 import router from './router'
 Vue.use(VueRouter)
+//axios
+import axios from "axios";
 
 new Vue({
   render: h => h(App),

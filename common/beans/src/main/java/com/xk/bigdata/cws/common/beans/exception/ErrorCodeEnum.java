@@ -1,4 +1,4 @@
-package com.xk.bigdata.cws.common.tools.exception;
+package com.xk.bigdata.cws.common.beans.exception;
 
 /**
  * @author ：xiankai

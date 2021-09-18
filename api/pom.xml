@@ -32,6 +32,10 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>jaxrs-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>cws-beans</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

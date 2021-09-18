@@ -1,9 +1,8 @@
 <template>
     <div>
         <el-row ref="editor_bar" style="padding-bottom: 10px">
-            <el-button icon="el-icon-s-promotion" round type="primary" plain>执行</el-button>
+            <el-button icon="el-icon-s-promotion" @click="runSql" round type="primary" plain>执行</el-button>
             <el-button icon="el-icon-brush" round  @click="format()" type="success" plain>格式化</el-button>
-            <el-button icon="el-icon-search" circle></el-button>
         </el-row>
             <textarea ref="mycode" v-model="code"/>
     </div>
@@ -23,6 +22,8 @@ require('codemirror/addon/hint/show-hint')
 require('codemirror/addon/hint/sql-hint')
 import sqlFormatter from 'sql-formatter'
 import '../assets/icon/iconfont.css'
+import axios from "axios";
+
 
 
 export default {
@@ -43,6 +44,25 @@ export default {
             var fomated_sql = sqlFormatter.format(sqlContent);
             this.editor.setValue(fomated_sql)
         },
+        runSql(){
+            this.format();
+            var sql = this.editor.getValue()
+            axios.post("/cws/rest/task/sql", {
+               data:{
+                   sql:sql
+               }
+            }).then(
+                    response => {
+                        this.$message({
+                            message: '成功！',
+                            type: 'success'
+                        });
+                    },
+                    error => {
+                        this.$message.error('执行sql失败');
+                    }
+            )
+        }
     },
     mounted() {
         this.editor = CodeMirror.fromTextArea(this.$refs.mycode, {
@@ -61,6 +81,9 @@ export default {
                 "Ctrl-Space": editor => {
                     editor.showHint();
                 }
+            },
+            hintOptions: {
+                completeSingle: false
             }
         });
         this.editor.on("keypress", editor => {

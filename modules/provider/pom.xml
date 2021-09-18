@@ -40,6 +40,10 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>cws-tools</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

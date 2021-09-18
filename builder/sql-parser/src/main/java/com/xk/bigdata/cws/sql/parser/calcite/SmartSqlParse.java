@@ -1,7 +1,7 @@
 package com.xk.bigdata.cws.sql.parser.calcite;
 
 import com.xk.bigdata.cws.common.tools.engine.Engine;
-import com.xk.bigdata.cws.common.tools.exception.SqlParseExeception;
+import com.xk.bigdata.cws.common.beans.exception.SqlParseExeception;
 import com.xk.bigdata.cws.sql.parser.BaseSqlParser;
 import javafx.util.Pair;
 

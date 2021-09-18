@@ -24,7 +24,7 @@ public class BaseRspDTO<T> implements Serializable {
     /**
      * 业务数据对象
      */
-    private T bigData;
+    private T data;
 
 
     public Integer getCode() {
@@ -51,14 +51,13 @@ public class BaseRspDTO<T> implements Serializable {
         this.remark = remark;
     }
 
-    public T getBigData() {
-        return bigData;
+    public T getData() {
+        return data;
     }
 
-    public void setBigData(T bigData) {
-        this.bigData = bigData;
+    public void setData(T data) {
+        this.data = data;
     }
-
 
     public static class BaseRspDTOFactory {
 
@@ -87,9 +86,9 @@ public class BaseRspDTO<T> implements Serializable {
         }
 
 
-        private <T> BaseRspDTO<T> createCommonResponse(T bigData, int code, String msg) {
+        private <T> BaseRspDTO<T> createCommonResponse(T data, int code, String msg) {
             BaseRspDTO<T> baseRspDTO = new BaseRspDTO<T>();
-            baseRspDTO.setBigData(bigData);
+            baseRspDTO.setData(data);
             baseRspDTO.setCode(code);
             baseRspDTO.setMsg(msg);
             return baseRspDTO;
