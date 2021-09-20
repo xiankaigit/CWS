@@ -17,10 +17,15 @@ Vue.use(VueCodeMirror)
 import VueRouter from 'vue-router'
 import router from './router'
 Vue.use(VueRouter)
+//store
+import store from './store'
 //axios
 import axios from "axios";
 
+import './style/base.css'
+
 new Vue({
   render: h => h(App),
-  router: router
+  router: router,
+  store
 }).$mount('#app')

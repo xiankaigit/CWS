@@ -22,7 +22,7 @@ public class TaskRunImpl implements TaskRun {
     public BaseRspDTO runSql(BaseReqDTO<RunSqlParam> req) {
         String sql = req.getData().getSql();
         LOG.info("run sql {}", sql);
-        BaseRspDTO<Object> resp = BaseRspDTO.BaseRspDTOFactory.INSTANCE.createFailResponse(null, 1, "msg");
+        BaseRspDTO<Object> resp = BaseRspDTO.BaseRspDTOFactory.INSTANCE.createFailResponse(null, 1, "异步任务已提交，可在任务监控查看任务状态！");
         return resp;
     }
 }

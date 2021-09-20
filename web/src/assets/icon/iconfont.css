@@ -8,3 +8,23 @@
     visibility: hidden;
     content: "\e611";
 }
+.el-icon-my-table{
+    background: url('~@/assets/icon/table.svg') center no-repeat;
+    background-size: 100% 100%;
+    font-size: 16px;
+}
+.el-icon-my-table:before{
+    font-size: 16px;
+    visibility: hidden;
+    content: "\e611";
+}
+.el-icon-my-add{
+    background: url('~@/assets/icon/add.svg') center no-repeat;
+    background-size: 100% 100%;
+    font-size: 16px;
+}
+.el-icon-my-add:before{
+    font-size: 16px;
+    visibility: hidden;
+    content: "\e611";
+}

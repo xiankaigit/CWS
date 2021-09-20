@@ -1,11 +1,10 @@
 <template>
-    <div>
         <router-view></router-view>
-    </div>
-
 </template>
 
 <script>
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
+
 export default {
     name: "ContextBody"
 }

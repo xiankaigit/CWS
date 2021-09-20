@@ -2,15 +2,22 @@
     <el-container>
 
         <el-container>
-            <el-aside id="nav-aside" width="200px" style="background-color: rgb(84,92,100); ">
-                <Navigation></Navigation>
-            </el-aside>
+            <el-header style="text-align: left">欢迎使用超级计算工作站（CWS）</el-header>
             <el-container>
-                <el-header style="text-align: left">欢迎使用超级计算工作站（CWS）</el-header>
-                <el-main>
-                    <!--<SqlArea></SqlArea>-->
-                    <ContextBody></ContextBody>
-                </el-main>
+                <el-aside id="nav-aside" width="200px" style="background-color: rgb(84,92,100); ">
+                    <Navigation></Navigation>
+                </el-aside>
+                <el-container>
+                    <el-header
+                            style="text-align: left;vertical-align:middle;line-height: 30px;background-color: #E9EEF3;height: 50px;padding: 15px">
+                        <el-page-header @back="goBack" :content="tabName">
+                        </el-page-header>
+                    </el-header>
+                    <el-main>
+                        <ContextBody></ContextBody>
+                    </el-main>
+                </el-container>
+
             </el-container>
         </el-container>
     </el-container>
@@ -18,8 +25,9 @@
 
 <script>
 import Navigation from "./Navigation";
-import SqlArea from "./SqlArea";
+import SqlArea from "../task/SqlArea";
 import ContextBody from "./ContextBody";
+import {mapState} from "vuex";
 
 export default {
     name: "Layout",
@@ -32,6 +40,14 @@ export default {
         };
         return {
             tableData: Array(20).fill(item)
+        }
+    },
+    computed: {
+        ...mapState('base', ['tabName'])
+    },
+    methods: {
+        goBack() {
+            this.$router.back()
         }
     }
 };
@@ -53,8 +69,8 @@ export default {
 }
 
 .el-main {
-    background-color: #E9EEF3;
-    color: #333;
+    /*background-color: #E9EEF3;*/
+    /*color: #333;*/
 }
 
 body > .el-container {
