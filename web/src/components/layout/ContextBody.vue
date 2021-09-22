@@ -1,9 +1,10 @@
 <template>
+    <keep-alive>
         <router-view></router-view>
+    </keep-alive>
 </template>
 
 <script>
-import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
     name: "ContextBody"

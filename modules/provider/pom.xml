@@ -11,18 +11,6 @@
     <groupId>com.xk.bigdata.cws</groupId>
     <artifactId>cws-provider</artifactId>
     <name>cws-provider</name>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <packaging>jar</packaging>
 
 
@@ -30,6 +18,10 @@
         <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
             <artifactId>cws-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>cws-modules</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

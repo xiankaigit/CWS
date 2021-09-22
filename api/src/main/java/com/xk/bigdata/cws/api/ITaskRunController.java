@@ -1,7 +1,7 @@
 package com.xk.bigdata.cws.api;
 
 import com.xk.bigdata.cws.common.beans.dto.req.BaseReqDTO;
-import com.xk.bigdata.cws.common.beans.dto.req.data.RunSqlParam;
+import com.xk.bigdata.cws.common.beans.dto.req.data.RunSqlParamDTO;
 import com.xk.bigdata.cws.common.beans.dto.rsp.BaseRspDTO;
 
 import javax.ws.rs.*;
@@ -15,11 +15,11 @@ import javax.ws.rs.core.MediaType;
 @Path("/cws/rest/task/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public interface TaskRun {
+public interface ITaskRunController {
 
     @Path("/sql")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
-    BaseRspDTO runSql(BaseReqDTO<RunSqlParam> req);
+    BaseRspDTO runSql(BaseReqDTO<RunSqlParamDTO> req);
 }

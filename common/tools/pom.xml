@@ -15,6 +15,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.xk.bigdata.cws</groupId>
             <artifactId>cws-beans</artifactId>
         </dependency>
