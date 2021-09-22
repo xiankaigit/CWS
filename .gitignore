@@ -21,3 +21,4 @@ RemoteSystemsTempFiles
 .apt_generated
 data
 static
+*.db
