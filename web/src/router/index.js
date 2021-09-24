@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import SqlArea from "@/components/task/SqlArea";
 import TableManagement from "@/components/meta/TableManagement";
 import Interpreter from "@/components/cluster/Interpreter";
+import InterpreterConf from "@/components/cluster/InterpreterConf";
 import EmptyPage from "@/components/layout/EmptyPage";
 
 export default new VueRouter({
@@ -18,6 +19,10 @@ export default new VueRouter({
             name: 'interpreter',
             path: '/interpreter',
             component: Interpreter
+        },{
+            name: 'interpreterConf',
+            path: '/interpreter/conf',
+            component: InterpreterConf,
         }, {
             name: 'emptyPage',
             path: '/',

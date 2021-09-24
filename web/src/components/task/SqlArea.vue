@@ -1,12 +1,17 @@
 <template>
     <div>
         <el-row class="editor_bar" style="padding-bottom: 10px">
-            <el-button class="tool-bar-item" icon="el-icon-s-promotion" size="small" @click="runSql" round
-                       type="primary" plain>执行
-            </el-button>
-            <el-button class="tool-bar-item" icon="el-icon-brush" round size="small" @click="format()" type="success"
-                       plain>格式化
-            </el-button>
+            <el-tooltip class="item" effect="dark" content="执行" placement="top">
+                <el-button class="tool-bar-item" icon="el-icon-s-promotion" size="small" @click="runSql" circle
+                           type="primary" plain>
+                </el-button>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="格式化" placement="top">
+                <el-button class="tool-bar-item" icon="el-icon-brush" circle size="small" @click="format()"
+                           type="success"
+                           plain>
+                </el-button>
+            </el-tooltip>
         </el-row>
         <textarea ref="mycode" v-model="code"/>
     </div>
@@ -65,13 +70,14 @@ export default {
                     response => {
                         console.info(response)
                         var code = response.data.code;
-                        if(code == 1)
+                        if (code == 1)
                             this.$message({
                                 message: '成功: ' + response.data.msg,
                                 type: 'success'
                             });
                         else
-                            this.$message.error('失败: ' + response.data.msg);
+                            console.info("sql this ==>", this)
+                        this.$message.error('失败: ' + response.data.msg);
                     },
                     error => {
                         console.info(error)
@@ -80,8 +86,10 @@ export default {
             )
         }
     },
-    mounted() {
+    activated() {
         this.$store.dispatch('base/setValue', {tabName: this.tabName})
+    },
+    mounted() {
         this.editor = CodeMirror.fromTextArea(this.$refs.mycode, {
             tabSize: 4,
             mode: "text/x-mysql",

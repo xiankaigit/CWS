@@ -1,7 +1,7 @@
 package com.xk.bigdata.cws.moudles.business.service.impl;
 
 import com.xk.bigdata.cws.common.beans.bo.ItBO;
-import com.xk.bigdata.cws.common.tools.base.CwsUtils;
+import com.xk.bigdata.cws.common.tools.utils.CwsUtils;
 import com.xk.bigdata.cws.moudles.business.dao.ItDao;
 import com.xk.bigdata.cws.moudles.business.dao.entity.ItDO;
 import com.xk.bigdata.cws.moudles.business.service.ItService;

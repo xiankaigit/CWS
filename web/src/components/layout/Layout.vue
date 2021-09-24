@@ -1,8 +1,7 @@
 <template>
     <el-container>
-
         <el-container>
-            <el-header style="text-align: left;background-color: rgb(38,38,38);color: #dddddd">欢迎使用超级计算工作站（CWS）</el-header>
+            <!--<el-header style="text-align: left;background-color: rgb(38,38,38);color: #dddddd">欢迎使用超级计算工作站（CWS）</el-header>-->
             <el-container>
                 <el-aside id="nav-aside" width="200px" style="background-color: rgb(84,92,100); ">
                     <Navigation></Navigation>

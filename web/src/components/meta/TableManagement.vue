@@ -35,8 +35,8 @@ export default {
             }]
         }
     },
-    mounted() {
-        this.$store.dispatch('base/setValue',{tabName: this.tabName})
+    activated() {
+        this.$store.dispatch('base/setValue', {tabName: this.tabName})
     }
 }
 </script>

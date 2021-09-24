@@ -1,8 +1,7 @@
-package com.xk.bigdata.cws.common.tools.base;
+package com.xk.bigdata.cws.common.tools.utils;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,5 +24,17 @@ public class CwsUtils {
             return Collections.emptyList();
         List<T> res = ks.stream().map(k -> pojoTrans(k, clazz)).collect(Collectors.toList());
         return res;
+    }
+
+    public static boolean isEmpty(String s){
+         return s == null || "".equals(s);
+    }
+    public static boolean isNotEmpty(String s){
+        return !isEmpty(s);
+    }
+
+    //后面改成从session获取
+    public static Integer getUserId(){
+        return 1;
     }
 }

@@ -36,6 +36,10 @@
             <groupId>com.xk.bigdata.cws</groupId>
             <artifactId>cws-tools</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xk.bigdata.cws</groupId>
+            <artifactId>cws-business</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

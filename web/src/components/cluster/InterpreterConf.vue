@@ -1,23 +1,15 @@
 <template>
-
-
     <div>
         <el-row class="editor_bar" style="padding-bottom: 10px">
-            <el-select v-model="value" @change="getTableData" size="medium" placeholder="请选择" class="tool-bar-item">
-                <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                </el-option>
-            </el-select>
-            <el-button type="primary" icon="el-icon-circle-plus-outline" @click="dialogFormVisible = true" size="small"
-                       round class="tool-bar-item">新增
-            </el-button>
-            <el-button type="success" icon="el-icon-edit" size="small" round class="tool-bar-item">编辑</el-button>
-            <el-button type="danger" icon="el-icon-delete" size="small" round class="tool-bar-item">删除</el-button>
+            <el-tooltip class="item" effect="dark" content="新增配置参数" placement="top">
+                <el-button type="primary" icon="el-icon-plus" @click="dialogFormVisible = true" size="small"
+                           circle class="tool-bar-item">
+                </el-button>
+            </el-tooltip>
+            <!-- <el-button type="success" icon="el-icon-edit" size="small" round class="tool-bar-item">编辑</el-button>-->
+            <!--<el-button type="danger" icon="el-icon-delete" size="small" round class="tool-bar-item">删除</el-button>-->
         </el-row>
-        <el-table :data="tableData" stripe height="300" highlight-current-row style="height:100%; width: 100%">
+        <el-table :data="tableData" stripe highlight-current-row style="height:100%;">
             <el-table-column prop="name" label="属性名"></el-table-column>
             <el-table-column prop="value" label="属性值"></el-table-column>
             <el-table-column prop="remark" label="备注"></el-table-column>
@@ -33,13 +25,13 @@
         </el-table>
         <el-dialog title="新增配置项" :visible.sync="dialogFormVisible">
             <el-form :model="form">
-                <el-form-item label="属性名" label-width="120px">
+                <el-form-item label="属性名:" label-width="120px">
                     <el-input v-model="form.name" style="width: 100%" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="属性值" label-width="120px">
+                <el-form-item label="属性值:" label-width="120px">
                     <el-input v-model="form.value" style="width: 100%" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="备注" label-width="120px">
+                <el-form-item label="备注:" label-width="120px">
                     <el-input v-model="form.remark" style="width: 100%" autocomplete="off"></el-input>
                 </el-form-item>
             </el-form>
@@ -60,12 +52,11 @@ export default {
         return {
             tabName: '解释器配置',
             dialogFormVisible: false,
-            options: [{
-                value: 'flink',
-                label: 'flink'
-            }],
-            value: 'flink',
+            value: '',
+            edit: false,
+            editRowIdx: '',
             form: {
+                id: '',
                 name: '',
                 value: '',
                 remark: ''
@@ -80,23 +71,59 @@ export default {
     },
     methods: {
         deleteRow(index, rows) {
-            rows.splice(index, 1);
+            let delItConfData = {
+                'id': rows[index].id,
+                'index': index
+            }
+
+            this.delItConf(delItConfData);
+
+        },
+        reset() {
+            this.edit = false
+            this.form = {
+                id: '',
+                name: '',
+                value: '',
+                remark: ''
+            }
+            this.editRowIdx = '';
         },
         updateRow(index, rows) {
-            console.log(index, rows)
-            alert("updateRow")
+            this.editRowIdx = index;
+            this.edit = true
+            this.dialogFormVisible = true
+            this.form.id = rows[index].id
+            this.form.name = rows[index].name
+            this.form.value = rows[index].value
+            this.form.remark = rows[index].remark
         },
-        closeDialog(flag){
+        closeDialog(flag) {
             this.dialogFormVisible = false
-            if(flag){
-               // save to db
+            if (flag) {
+
+                let itConf = {
+                    itId: this.$route.params.itId,
+                    name: this.form.name,
+                    value: this.form.value,
+                    remark: this.form.remark
+                }
+
+                if (this.edit) {
+                    let itConfId = this.form.id
+                    itConf.id = itConfId
+                    itConf.index = this.editRowIdx
+                }
+                this.saveItConf(itConf)
+                this.reset()
             }
         },
-        ...mapActions('cluster', {'getTableData': 'getItConf'})
+        ...mapActions('cluster', {'getTableData': 'getItConf', 'saveItConf': 'saveItConf', 'delItConf': 'delItConf'})
     },
-    mounted() {
+    activated() {
+        if (this.$route.params.itId != undefined)
+            this.$store.commit('cluster/getItConf', this.$route.params.itId)
         this.$store.dispatch('base/setValue', {tabName: this.tabName})
-        this.getTableData(this.value);
     }
 }
 </script>

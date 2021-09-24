@@ -8,17 +8,17 @@ import java.io.Serializable;
  */
 public class ItConfBO implements Serializable {
 
-    private Long id;
+    private Integer id;
     private String name;
     private String value;
-    private Long itId;
+    private Integer itId;
     private String remark;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,11 +38,11 @@ public class ItConfBO implements Serializable {
         this.value = value;
     }
 
-    public Long getItId() {
+    public Integer getItId() {
         return itId;
     }
 
-    public void setItId(Long itId) {
+    public void setItId(Integer itId) {
         this.itId = itId;
     }
 
@@ -53,5 +53,4 @@ public class ItConfBO implements Serializable {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-
 }

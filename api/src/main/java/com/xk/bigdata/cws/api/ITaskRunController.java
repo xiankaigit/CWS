@@ -1,7 +1,7 @@
 package com.xk.bigdata.cws.api;
 
 import com.xk.bigdata.cws.common.beans.dto.req.BaseReqDTO;
-import com.xk.bigdata.cws.common.beans.dto.req.data.RunSqlParamDTO;
+import com.xk.bigdata.cws.common.beans.dto.req.data.RunSqlReqDTO;
 import com.xk.bigdata.cws.common.beans.dto.rsp.BaseRspDTO;
 
 import javax.ws.rs.*;
@@ -21,5 +21,5 @@ public interface ITaskRunController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
-    BaseRspDTO runSql(BaseReqDTO<RunSqlParamDTO> req);
+    BaseRspDTO runSql(BaseReqDTO<RunSqlReqDTO> req);
 }

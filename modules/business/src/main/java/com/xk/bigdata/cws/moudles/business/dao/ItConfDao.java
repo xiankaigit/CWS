@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface ItConfDao extends PagingAndSortingRepository<ItConfDO, Integer> {
 
-    List<ItConfDO> getAllByItId(Long itId);
+    List<ItConfDO> getAllByItId(Integer itId);
+
+    void deleteAllByItId(Integer itId);
 
 }

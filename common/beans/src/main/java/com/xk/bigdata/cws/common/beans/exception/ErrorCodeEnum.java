@@ -5,7 +5,8 @@ package com.xk.bigdata.cws.common.beans.exception;
  * @date ：Created in 2021/9/10 上午10:39
  */
 public enum ErrorCodeEnum {
-    SQL_PARSE_EXE(1, "an exception occurred while parsing sql");
+    SQL_PARSE_EXE(1, "an exception occurred while parsing sql"),
+    DB_OPERATE_EXE(2, "an exception occurred while Operating database");
 
     private int code;
     private String msg;

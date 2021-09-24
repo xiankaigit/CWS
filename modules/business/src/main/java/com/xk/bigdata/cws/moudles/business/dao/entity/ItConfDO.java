@@ -12,22 +12,35 @@ import java.io.Serializable;
 @Table(name = "interpreter_conf")
 public class ItConfDO implements Serializable {
     @Id    //主键id
-    @GeneratedValue(strategy = GenerationType.AUTO)//主键生成策略
     @Column(name = "id")//数据库字段名
-    private Long id;
+    //@SequenceGenerator(name = "it_conf_group", sequenceName = "seq_it_conf_group", allocationSize = 1)
+    // @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator_it_conf_group")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     @NotNull
     private String name;
     @NotNull
     private String value;
     @NotNull
-    private Long itId;
+    private Integer itId;
     private String remark;
 
-    public Long getId() {
+    public ItConfDO() {
+    }
+
+    public ItConfDO(Integer id, String name, String value, Integer itId, String remark) {
+        this.id = id;
+        this.name = name;
+        this.value = value;
+        this.itId = itId;
+        this.remark = remark;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,19 +60,19 @@ public class ItConfDO implements Serializable {
         this.value = value;
     }
 
+    public Integer getItId() {
+        return itId;
+    }
+
+    public void setItId(Integer itId) {
+        this.itId = itId;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public Long getItId() {
-        return itId;
-    }
-
-    public void setItId(Long itId) {
-        this.itId = itId;
     }
 }

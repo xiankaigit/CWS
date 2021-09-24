@@ -8,15 +8,17 @@ import java.io.Serializable;
  */
 public class ItBO implements Serializable {
 
-    private Long id;
+    private Integer id;
     private String kind;
     private String name;
+    private Integer userId;
+    private String remark;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,4 +38,19 @@ public class ItBO implements Serializable {
         this.name = name;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }
