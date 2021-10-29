@@ -21,6 +21,7 @@
         <module>api</module>
         <module>web</module>
         <module>builder</module>
+        <module>interpreters</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -31,10 +32,26 @@
         <resteasy.version>2.3.4-RELEASE</resteasy.version>
         <jaxrs.version>3.0.12.Final</jaxrs.version>
         <javatuples.version>1.2</javatuples.version>
+        <jboss.resteasy.version>3.0.19.Final</jboss.resteasy.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-spring</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxb-provider</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jackson-provider</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
@@ -113,6 +130,16 @@
             <dependency>
                 <groupId>com.xk.bigdata.cws</groupId>
                 <artifactId>cws-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xk.bigdata.cws</groupId>
+                <artifactId>cws-interpreter-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xk.bigdata.cws</groupId>
+                <artifactId>cws-interpreter-flink</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

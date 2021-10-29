@@ -13,16 +13,15 @@
                 </el-button>
             </el-tooltip>
         </el-row>
-        <div>
-            <textarea ref="mycode" v-model="code"/>
-        </div>
-
+        <textarea ref="mycode"  @keyup.enter="runSql" v-model="code"/>
     </div>
 </template>
 
 <script>
 
-
+import 'codemirror/theme/ambiance.css'
+import '../../style/codemirror.css'
+import 'codemirror/addon/hint/show-hint.css'
 
 const CodeMirror = require('codemirror/lib/codemirror')
 require('codemirror/addon/edit/matchbrackets')
@@ -35,7 +34,6 @@ import 'codemirror/theme/base16-light.css'
 // import 'codemirror/lib/codemirror.css'
 import '../../style/codemirror.css'
 import 'codemirror/addon/hint/show-hint.css'
-import 'codemirror/theme/ambiance.css'
 
 
 import sqlFormatter from 'sql-formatter'
@@ -87,13 +85,6 @@ export default {
                         this.$message.error('执行sql失败: 服务器内部异常');
                     }
             )
-        },
-        reSizeHeight(cm, h){
-            var wrap = this.editor.getWrapperElement();
-            var h = h || 200;
-            var appHeight = cm.getScrollInfo().height > h ? h + 'px' : 'auto';
-            wrap.style.height = appHeight;
-            cm.refresh();
         }
     },
     activated() {
@@ -111,7 +102,6 @@ export default {
             line: true,
             lineWrapping: true,
             value: "请输入sql",
-            dragDrop: true,
             extraKeys: {
                 'Ctrl': 'autocomplete',
                 "Ctrl-Space": editor => {
@@ -125,11 +115,19 @@ export default {
         this.editor.on("keypress", editor => {
             editor.showHint();
         });
-         this.editor.setSize('auto','200px');
     }
 };
 </script>
 
 <style scoped>
+.CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+}
 
+.CodeMirror-scroll {
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
 </style>
