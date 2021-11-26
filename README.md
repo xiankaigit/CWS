@@ -1,7 +1,7 @@
 # CWS  
 # 1.概述  
-计算服务工作站(Computing WorkStation,CWS)提供支持Flink，Spark，Hive等计算引擎的可视化任务提交，并提供任务监控等功能。  
-![avatar](./images/架构图.png)  
+计算服务工作站(Computing WorkStation,CWS)提供支持Flink，Spark，Hive等计算引擎的一站式任务提交（支持通过SQL分配执行引擎），并提供任务监控等功能。  
+![avatar](./images/架构图.png)  (如果无法显示请查看images文件夹下的图片)
 # 2.说明  
    CWS致力于为主流的分布式计算引擎，如 Flink, Spark等，提供统一的、一站式的任务提交、任务监控、集群监控能力。CWS从上到下依次包含Client、鉴权中心、任务构造层、调度层以及执行层。  
    + client层：为用户接入cws提供客户端支持，例如WebUI、RestAPI(方便用于和cws集成)、JDBC以及Beeline等。cws即支持通过WebUI提供的工具，图形化的任务构造并提交，也可以通过提供的JDBC或WebUI使用SQL提交任务。  
